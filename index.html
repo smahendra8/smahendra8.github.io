@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sampathi Mahendra — Java Backend Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --white: #ffffff;
       --off-white: #f8f7f4;
@@ -19,6 +22,8 @@
       --accent-light: #f5ede0;
       --java-blue: #2563eb;
       --spring-green: #16a34a;
+      --gold: #c8954a;
+      --gold-dim: #f5ede033;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -234,57 +239,71 @@
     .info-list li strong { color: var(--accent); min-width: 100px; font-weight: 600; }
     .info-icon { font-size: 1rem; }
 
+/* ─── SKILLS ─── */
+    #skills { background: var(--bg); }
 
- /* ── TECH STACK ── */
-    .stack-section { padding-top: 1rem; }
-
-    .stack-category { margin-bottom: 2rem; }
-
-    .stack-cat-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      font-family: 'Geist Mono', monospace;
-      margin-bottom: 0.75rem;
+    .skills-filters {
       display: flex;
-      align-items: center;
       gap: 0.5rem;
-    }
-
-    .stack-pills {
-      display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.3rem 0.7rem;
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
       font-size: 0.8rem;
       font-weight: 500;
-      color: var(--text);
-      font-family: 'Geist Mono', monospace;
-      transition: border-color 0.2s, background 0.2s;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--gold-dim);
+      border-color: rgba(184,134,11,0.45);
+      color: var(--gold);
     }
 
-    .pill:hover {
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+      box-shadow: 0 2px 10px rgba(124,58,237,0.06);
+    }
+    .skill-item:hover {
       border-color: var(--border2);
-      background: var(--bg-card2);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(124,58,237,0.13);
     }
 
-    .pill-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      flex-shrink: 0;
+    .skill-item img {
+      width: 40px; height: 40px;
+      object-fit: contain;
     }
-    /* ── PROJECTS ── */
+
+    .skill-item span {
+      font-size: 0.75rem;
+      color: var(--text2);
+      font-weight: 500;
+    }
+* ── PROJECTS ── */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; }
     .project-card {
       background: var(--white);
@@ -553,66 +572,96 @@
   </div>
 </section>
 
-<<!-- ── TECH STACK ── -->
-<section id="stack" class="stack-section">
-  <h2 class="section-title">Tech Stack</h2>
 
-  <!-- Backend -->
-  <div class="stack-category">
-    <div class="stack-cat-title">⚙️ Backend</div>
-    <div class="stack-pills">
-      <span class="pill"><span class="pill-dot" style="background:#f89820"></span>Java</span>
-      <span class="pill"><span class="pill-dot" style="background:#6db33f"></span>Spring Boot</span>
-      <span class="pill"><span class="pill-dot" style="background:#59666c"></span>Hibernate / JPA</span>
-      <span class="pill"><span class="pill-dot" style="background:#f89820"></span>Core Java / OOPs</span>
-    </div>
+<!-- ─── SKILLS ─── -->
+<section id="skills">
+  <div class="section-label">WHAT I KNOW</div>
+  <h2 class="section-title">Skills</h2>
+
+  <div class="skills-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="languages">Languages</button>
+    <button class="filter-btn" data-filter="backend">Backend</button>
+    <button class="filter-btn" data-filter="databases">Databases</button>
+    <button class="filter-btn" data-filter="tools">Tools</button>
+
   </div>
 
-  <!-- Databases -->
-  <div class="stack-category">
-    <div class="stack-cat-title">🗄️ Databases</div>
-    <div class="stack-pills">
-      <span class="pill"><span class="pill-dot" style="background:#336791"></span>PostgreSQL</span>
-      <span class="pill"><span class="pill-dot" style="background:#003b57"></span>SQL</span>
-    </div>
-  </div>
+  <div class="skills-grid" id="skillsGrid">
 
-  <!-- DevOps / Tools -->
-  <div class="stack-category">
-    <div class="stack-cat-title">🛠️ Tools & Environment</div>
-    <div class="stack-pills">
-      <span class="pill"><span class="pill-dot" style="background:#fe2c00"></span>IntelliJ IDEA</span>
-      <span class="pill"><span class="pill-dot" style="background:#007acc"></span>VS Code</span>
-      <span class="pill"><span class="pill-dot" style="background:#f05032"></span>Git</span>
-      <span class="pill"><span class="pill-dot" style="background:#ff6c37"></span>Postman</span>
-      <span class="pill"><span class="pill-dot" style="background:#85c1e9"></span>Swagger</span>
-      <span class="pill"><span class="pill-dot" style="background:#cc3534"></span>Adobe Photoshop</span>
+    <!-- Languages -->
+    <div class="skill-item" data-cat="languages">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FJava.png&w=96&q=75" alt="Java" />
+      <span>Java</span>
     </div>
-  </div>
 
-  <!-- OS -->
-  <div class="stack-category">
-    <div class="stack-cat-title">💻 Operating Systems</div>
-    <div class="stack-pills">
-      <span class="pill"><span class="pill-dot" style="background:#fcc624"></span>Linux</span>
-      <span class="pill"><span class="pill-dot" style="background:#0078d4"></span>Windows</span>
+    <!-- Backend -->
+    <div class="skill-item" data-cat="backend">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FSpringBoot.png&w=96&q=75" alt="Spring Boot" />
+      <span>Spring Boot</span>
     </div>
-  </div>
 
-  <!-- Embedded -->
-  <div class="stack-category">
-    <div class="stack-cat-title">📡 Embedded / IoT</div>
-    <div class="stack-pills">
-      <span class="pill"><span class="pill-dot" style="background:#00979d"></span>Arduino IDE</span>
-      <span class="pill"><span class="pill-dot" style="background:#444444"></span>Embedded C</span>
-      <span class="pill"><span class="pill-dot" style="background:#00979d"></span>Arduino Uno</span>
-      <span class="pill"><span class="pill-dot" style="background:#e07c24"></span>NodeMCU</span>
+    <!-- Databases -->
+    <div class="skill-item" data-cat="databases">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FPostgresSQL.png&w=96&q=75" alt="PostgreSQL" />
+      <span>PostgreSQL</span>
     </div>
+
+    <div class="skill-item" data-cat="databases">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FSQL%20Developer.png&w=96&q=75" alt="SQL" />
+      <span>SQL</span>
+    </div>
+
+    <!-- Tools -->
+    <div class="skill-item" data-cat="tools">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FIntelliJ%20IDEA.png&w=96&q=75" alt="IntelliJ" />
+      <span>IntelliJ</span>
+    </div>
+
+    <div class="skill-item" data-cat="tools">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FVSCode.png&w=96&q=75" alt="VS Code" />
+      <span>VS Code</span>
+    </div>
+
+    <div class="skill-item" data-cat="tools">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FGit.png&w=96&q=75" alt="Git" />
+      <span>Git</span>
+    </div>
+
+    <div class="skill-item" data-cat="tools">
+      <img src="https://manjunathbhandari.vercel.app/_next/image?url=%2Fskills%2FPostman.png&w=96&q=75" alt="Postman" />
+      <span>Postman</span>
+    </div>
+
+    <!-- Concepts (icon-based) -->
+    <div class="skill-item" data-cat="concepts">
+      <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--gold-dim);border-radius:8px;">
+        <i class="fa-solid fa-cubes" style="color:var(--gold);font-size:1.4rem;"></i>
+      </div>
+      <span>OOP</span>
+    </div>
+
+
+
+
+    <div class="skill-item" data-cat="concepts">
+      <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--gold-dim);border-radius:8px;">
+        <i class="fa-solid fa-plug" style="color:var(--gold);font-size:1.4rem;"></i>
+      </div>
+      <span>REST API</span>
+    </div>
+
+    <div class="skill-item" data-cat="concepts">
+      <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--gold-dim);border-radius:8px;">
+        <i class="fa-solid fa-wifi" style="color:var(--gold);font-size:1.4rem;"></i>
+      </div>
+      <span>IoT</span>
+    </div>
+
   </div>
 </section>
 
-
-<!-- PROJECTS -->
+<div class="divider"></div>- PROJECTS -->
 <section id="projects">
   <div class="section-label">What I've Built</div>
   <div class="section-title">Live Projects</div>
@@ -785,6 +834,28 @@
 <footer>
   <p>© 2025 <strong>Sampathi Mahendra</strong> · Designed & Built with care · Nellore, Andhra Pradesh</p>
 </footer>
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const skillItems = document.querySelectorAll('.skill-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
+      skillItems.forEach(item => {
+        if (filter === 'all' || item.dataset.cat === filter) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
 
 </body>
 </html>
